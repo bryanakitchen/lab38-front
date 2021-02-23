@@ -5,13 +5,13 @@ export const getAllCards = () => {
     .then(res => res.json());
 };
 
-export const createCard = ({ keyTerm, definition, topic }) => {
+export const createCard = (dataObject) => {
   return fetch(`${URL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ keyTerm, definition, topic })
+    body: JSON.stringify(dataObject)
   })
     .then(res => res.json());
 };

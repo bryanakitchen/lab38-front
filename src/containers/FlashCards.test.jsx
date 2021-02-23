@@ -50,7 +50,7 @@ describe('FlashCards container', () => {
   it('adds a flashcard', () => {
     render(<FlashCards />);
 
-    const termInput = screen.getByLabelText('term');
+    const termInput = screen.getByLabelText('Key Term');
     const submitButton = screen.getByText('Add');
 
     fireEvent.change(termInput, {
@@ -58,7 +58,7 @@ describe('FlashCards container', () => {
         value: 'TDD'
       }
     });
-
+      
     fireEvent.click(submitButton);
 
     return waitFor(() => {

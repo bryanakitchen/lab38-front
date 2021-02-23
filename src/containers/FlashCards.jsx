@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardForm from '../components/cards/CardForm';
 import CardList from '../components/cards/CardList';
-import { getAllCards } from '../services/cardApi';
+import { createCard, getAllCards } from '../services/cardApi';
 
 function FlashCards() {
   const [cards, setCards] = useState([]);
@@ -12,21 +12,22 @@ function FlashCards() {
 
   useEffect(() => {
     getAllCards()
-      .then(cards => setCards(card => [...card, ...cards]));
+      .then(cards => setCards(cards));
   }, []);
 
   const handleChange = ({ target }) => {
-  // need if statement
-
-    // setTerm(target.value);
-    
-    // setDefinition(target.value);
-    
-  // setTopic(target.value);
+    if(target.name === 'term')
+      setTerm(target.value);
+    if(target.name === 'definition')
+      setDefinition(target.value);
+    if(target.name === 'topic')
+      setTopic(target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    createCard({ keyTerm: term, definition, topic })
+      .then(response => setCards(cards => [...cards, response]));
   };
 
   return (

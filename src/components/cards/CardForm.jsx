@@ -4,26 +4,29 @@ import PropTypes from 'prop-types';
 function CardForm({ term, definition, topic, onSubmit, onChange }) {
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="term"></label>
+      <label htmlFor="term">Key Term</label>
       <input 
         id="term" 
         type="text" 
+        name="term"
         value={term} 
-        onChange={onChange}/>
+        onChange={onChange}/><br/>
       
-      <label htmlFor="definition"></label>
+      <label htmlFor="definition">Definition</label>
       <input 
         id="definition" 
         type="text" 
+        name="definition"
         value={definition} 
-        onChange={onChange}/>
+        onChange={onChange}/><br/>
 
-      <label htmlFor="topic"></label>
+      <label htmlFor="topic">Topic</label>
       <input 
         id="topic" 
         type="text" 
+        name="topic"
         value={topic} 
-        onChange={onChange}/>
+        onChange={onChange}/><br/>
 
       <button>Add</button>
     </form>
