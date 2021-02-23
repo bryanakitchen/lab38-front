@@ -8,6 +8,15 @@ import FlashCards from './FlashCards';
 const URL = 'https://cryptic-waters-90298.herokuapp.com/api/v1/cards';
 
 const server = setupServer(
+  rest.post(`${URL}`, (req, res, ctx) => {
+    return res(ctx.json({
+      id: '123A',
+      keyTerm: 'TDD',
+      definition: 'This is a test',
+      topic: 'JavaScript'
+    }));
+  }),
+  
   rest.get(`${URL}`, (req, res, ctx) => {
     return res(ctx.json([
       { 
@@ -37,7 +46,7 @@ describe('FlashCards container', () => {
   beforeAll(() => server.listen());
   afterAll(() => server.close());
 
-  it('renders a list of flash cards', () => {
+  it('renders a list of flash cards', async() => {
     render(<FlashCards />);
 
     return waitFor(() => {
@@ -47,7 +56,7 @@ describe('FlashCards container', () => {
     });
   });
 
-  it('adds a flash card', () => {
+  it('adds a flash card', async() => {
     render(<FlashCards />);
 
     const termInput = screen.getByLabelText('Key Term');
@@ -56,24 +65,17 @@ describe('FlashCards container', () => {
     const submitButton = screen.getByText('Add');
 
     fireEvent.change(termInput, {
-      target: {
-        name: 'TDD'
-      }
+      target: { value: 'TDD' }
     });
-
+    
     fireEvent.change(definitionInput, {
-      target: {
-        name: 'This is a test'
-      }
+      target: { value: 'This is a test' }
     });
-      
+          
     fireEvent.change(topicInput, {
-      target: {
-        name: 'JavaScript'
-      }
+      target: { value: 'JavaScript' }
     });
-
-      
+          
     fireEvent.click(submitButton);
 
     return waitFor(() => {

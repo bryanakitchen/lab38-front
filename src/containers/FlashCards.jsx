@@ -32,7 +32,8 @@ function FlashCards() {
 
   const handleClick = ({ target }) => {
     deleteCard(target.value)
-      .then(location.reload());
+      .then(getAllCards)
+      .then(cards => setCards(cards));
   };
 
   return (
