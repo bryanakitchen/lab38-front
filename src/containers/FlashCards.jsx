@@ -1,16 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import CardList from '../components/cards/CardList';
+import { getAllCards } from '../services/cardApi';
 
 function FlashCards() {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    getAllCards()
+      .then(cards => setCards(cards));
+  }, []);
+
   return (
-    <div>
-        hello
-    </div>
+    <>
+      <CardList cards={cards} />
+    </>
   );
 }
-
-FlashCards.propTypes = {
-
-};
 
 export default FlashCards;

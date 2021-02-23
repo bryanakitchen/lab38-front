@@ -30,7 +30,7 @@ const server = setupServer(
   })
 );
 
-describe('FlashCards component', () => {
+describe('FlashCards container', () => {
   beforeAll(() => server.listen());
   afterAll(() => server.close());
 
