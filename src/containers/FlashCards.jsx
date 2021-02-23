@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CardForm from '../components/cards/CardForm';
 import CardList from '../components/cards/CardList';
-import { createCard, getAllCards } from '../services/cardApi';
+import { createCard, getAllCards, deleteCard } from '../services/cardApi';
 
 function FlashCards() {
   const [cards, setCards] = useState([]);
@@ -30,6 +30,11 @@ function FlashCards() {
       .then(response => setCards(cards => [...cards, response]));
   };
 
+  const handleClick = ({ target }) => {
+    deleteCard(target.value)
+      .then(location.reload());
+  };
+
   return (
     <>
       <CardForm 
@@ -38,7 +43,7 @@ function FlashCards() {
         topic={topic}
         onChange={handleChange}
         onSubmit={handleSubmit}  />
-      <CardList cards={cards} />
+      <CardList cards={cards} onClick={handleClick} />
     </>
   );
 }

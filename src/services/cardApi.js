@@ -15,3 +15,10 @@ export const createCard = (dataObject) => {
   })
     .then(res => res.json());
 };
+
+export const deleteCard = (id) => {
+  return fetch(`${URL}/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }    
+  }).then(res => res.json());
+};
