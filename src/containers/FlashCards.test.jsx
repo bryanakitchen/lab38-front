@@ -37,7 +37,7 @@ describe('FlashCards container', () => {
   beforeAll(() => server.listen());
   afterAll(() => server.close());
 
-  it('renders a list of flashcards', () => {
+  it('renders a list of flash cards', () => {
     render(<FlashCards />);
 
     return waitFor(() => {
@@ -47,17 +47,32 @@ describe('FlashCards container', () => {
     });
   });
 
-  it('adds a flashcard', () => {
+  it('adds a flash card', () => {
     render(<FlashCards />);
 
     const termInput = screen.getByLabelText('Key Term');
+    const definitionInput = screen.getByLabelText('Definition');
+    const topicInput = screen.getByLabelText('Topic');
     const submitButton = screen.getByText('Add');
 
     fireEvent.change(termInput, {
       target: {
-        value: 'TDD'
+        name: 'TDD'
       }
     });
+
+    fireEvent.change(definitionInput, {
+      target: {
+        name: 'This is a test'
+      }
+    });
+      
+    fireEvent.change(topicInput, {
+      target: {
+        name: 'JavaScript'
+      }
+    });
+
       
     fireEvent.click(submitButton);
 

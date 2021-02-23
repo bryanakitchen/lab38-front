@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 
-function CardList({ cards }) {
+function CardList({ cards, onClick }) {
   const cardElements = cards.map(card => (
     <li key={card.id}>
-      <Card {...card} />
+      <Card {...card} onClick={onClick} />
     </li>
   ));
 
@@ -21,7 +21,8 @@ CardList.propTypes = {
     keyTerm: PropTypes.string.isRequired,
     definition: PropTypes.string.isRequired,
     topic: PropTypes.string.isRequired,
-  })).isRequired
+  })).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default CardList;
