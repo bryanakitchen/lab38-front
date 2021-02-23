@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import FlashCards from './FlashCards';
@@ -50,7 +50,20 @@ describe('FlashCards container', () => {
   it('adds a flashcard', () => {
     render(<FlashCards />);
 
+    const termInput = screen.getByLabelText('term');
+    const submitButton = screen.getByText('Add');
 
+    fireEvent.change(termInput, {
+      target: {
+        value: 'TDD'
+      }
+    });
+
+    fireEvent.click(submitButton);
+
+    return waitFor(() => {
+      screen.getByText('TDD', { exact: false });
+    });
   });
 
 });
