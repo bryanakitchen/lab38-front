@@ -17,11 +17,11 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.objectOf({
+  cards: PropTypes.arrayOf(PropTypes.shape({
     keyTerm: PropTypes.string.isRequired,
     definition: PropTypes.string.isRequired,
     topic: PropTypes.string.isRequired,
-  }))
+  })).isRequired
 };
 
 export default CardList;

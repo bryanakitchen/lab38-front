@@ -7,7 +7,7 @@ function FlashCards() {
 
   useEffect(() => {
     getAllCards()
-      .then(cards => setCards(cards));
+      .then(cards => setCards(card => [...card, ...cards]));
   }, []);
 
   return (
