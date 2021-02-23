@@ -5,8 +5,10 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import FlashCards from './FlashCards';
 
+const URL = 'https://cryptic-waters-90298.herokuapp.com/api/v1/cards';
+
 const server = setupServer(
-  rest.get('https://cryptic-waters-90298.herokuapp.com/api/v1/cards', (req, res, ctx) => {
+  rest.get(`${URL}`, (req, res, ctx) => {
     return res(ctx.json([
       { 
         id: '123',
@@ -27,7 +29,8 @@ const server = setupServer(
         topic: 'JavaScript' 
       },
     ]));
-  })
+  }),
+
 );
 
 describe('FlashCards container', () => {
@@ -43,4 +46,11 @@ describe('FlashCards container', () => {
       screen.getByText('Document Object Model', { exact: false });
     });
   });
+
+  it('adds a flashcard', () => {
+    render(<FlashCards />);
+
+
+  });
+
 });
