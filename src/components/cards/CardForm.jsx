@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Card.css';
+import styles from './CardForm.css';
 
 function CardForm({ term, definition, topic, onSubmit, onChange }) {
   return (

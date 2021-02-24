@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Card.css';
 
 export default function Card({ id, keyTerm, definition, topic, onClick }) {
   return (
-    <details>
+    <details className={ styles.Card }>
       <summary>{keyTerm}</summary>
       <p>{definition}</p>
       <p><em>{topic}</em></p>

@@ -1,0 +1,34 @@
+.CardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 315px;
+    padding: 10px;
+    background: #470B30;
+    border-radius: 5px;
+
+    label {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    input {
+      width: 250px;
+    }
+
+    button {
+        width: 40px;
+        margin-top: 5px;
+    }
+}
+
+.header, .sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
+}
+
+.sub {
+    margin-bottom: 15px;
+}

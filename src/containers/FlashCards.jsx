@@ -29,6 +29,9 @@ function FlashCards() {
     e.preventDefault();
     createCard({ keyTerm: term, definition, topic })
       .then(response => setCards(cards => [...cards, response]));
+    setTerm('');
+    setDefinition('');
+    setTopic('');
   };
 
   const handleClick = ({ target }) => {
