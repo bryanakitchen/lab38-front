@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import styles from './CardList.css';
 
 function CardList({ cards, onClick }) {
   const cardElements = cards.map(card => (
-    <p key={card.id}>
+    <p key={card.id} className={ styles.oneCard }>
       <Card {...card} onClick={onClick} />
     </p>
   ));
 
   return (
-    <div>
+    <div className={ styles.CardList }>
       {cardElements}
     </div>
   );
