@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function Card({ id, keyTerm, definition, topic, onClick }) {
   return (
-    <div>
-      <h3 >{keyTerm}</h3>
+    <details>
+      <summary>{keyTerm}</summary>
       <p>{definition}</p>
       <p><em>{topic}</em></p>
       <button value={id} onClick={onClick}>Delete</button>
-    </div>
+    </details>
   );
 }
 

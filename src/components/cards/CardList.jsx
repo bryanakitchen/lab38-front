@@ -4,15 +4,15 @@ import Card from './Card';
 
 function CardList({ cards, onClick }) {
   const cardElements = cards.map(card => (
-    <li key={card.id}>
+    <p key={card.id}>
       <Card {...card} onClick={onClick} />
-    </li>
+    </p>
   ));
 
   return (
-    <ul>
+    <div>
       {cardElements}
-    </ul>
+    </div>
   );
 }
 

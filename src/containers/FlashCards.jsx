@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CardForm from '../components/cards/CardForm';
 import CardList from '../components/cards/CardList';
 import { createCard, getAllCards, deleteCard } from '../services/cardApi';
+import styles from './FlashCards.css';
 
 function FlashCards() {
   const [cards, setCards] = useState([]);
@@ -37,7 +38,7 @@ function FlashCards() {
   };
 
   return (
-    <>
+    <div className={ styles.container }>
       <CardForm 
         term={term}
         definition={definition}
@@ -45,7 +46,7 @@ function FlashCards() {
         onChange={handleChange}
         onSubmit={handleSubmit}  />
       <CardList cards={cards} onClick={handleClick} />
-    </>
+    </div>
   );
 }
 
